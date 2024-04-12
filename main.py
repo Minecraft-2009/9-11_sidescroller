@@ -49,10 +49,16 @@ class Obstacle(pygame.sprite.Sprite):
 
     # def tower_blit(self):
     #     display_surface.blit(self.image, self.rect)
+    def check_collision(self):
+        if self.rect.colliderect(player_rect):
+            return True
 
     def update(self):
         self.x -= 1
         self.rect.bottomleft = (self.x, self.y)
+        if self.check_collision():
+            print('YOU DIED')
+            pygame.quit()
 
 
 class Background(pygame.sprite.Sprite):
@@ -66,10 +72,11 @@ class Background(pygame.sprite.Sprite):
 
         self.rect.bottomleft = (x, y)
     
+
     def update(self):
         self.x -= 1
         self.rect.bottomleft = (self.x, self.y)
-        if self.x == -2250:
+        if self.x == -2000:
             self.x = 0
 
 
@@ -95,7 +102,7 @@ while running:
             running = False
         player_move(player_rect)
     stage_group.update()
-    stage_group.draw(stage_surface)
+    stage_group.draw(display_surface)
     # fill the display_surface with a color to wipe away anything from last frame
     # display_surface.fill("lightblue")
     display_surface.blit(player, player_rect)
