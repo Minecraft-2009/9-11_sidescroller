@@ -43,6 +43,7 @@ class Obstacle(pygame.sprite.Sprite):
 
         self.x = x
         self.y = y
+        
 
         self.rect.bottomleft = (self.x, self.y)
 
@@ -64,6 +65,12 @@ class Background(pygame.sprite.Sprite):
         self.y = y
 
         self.rect.bottomleft = (x, y)
+    
+    def update(self):
+        self.x -= 1
+        self.rect.bottomleft = (self.x, self.y)
+        if self.x == -2250:
+            self.x = 0
 
 
 tow = Obstacle(767, WINDOW_HEIGHT, "twin_towers")
@@ -87,9 +94,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         player_move(player_rect)
-
+    stage_group.update()
+    stage_group.draw(stage_surface)
     # fill the display_surface with a color to wipe away anything from last frame
-    display_surface.fill("lightblue")
+    # display_surface.fill("lightblue")
     display_surface.blit(player, player_rect)
 
     #stage_surface.fill("white")
@@ -98,8 +106,8 @@ while running:
     level_1_group.update()
     level_1_group.draw(display_surface)
     
-    #stage_group.update()
-    #stage_group.draw(stage_surface)
+    # collision logic
+    # if player_rect.colliderect()
 
     player_move(player_rect)
 
