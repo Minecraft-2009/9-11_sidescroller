@@ -9,6 +9,7 @@ display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), 1, 1)
 clock = pygame.time.Clock()
 running = True
 
+
 plane_velocity = 5
 
 font_start = pygame.font.SysFont("arial", 32, True)
