@@ -209,8 +209,8 @@ while running:
         t2t5 = Obstacle(1900, 400, 3, "balloon")
         t2t6 = Obstacle(1700, 300, 3, "balloon")
         disseaparing_t2t7 = Obstacle(1200, 60, 3, "pigeon")
-        # t2t8 = Obstacle(2550, 400, 3, "walt2")
-        t2t9 = Obstacle(2050, 400, 3, "twin_towers")
+        t2t8 = Obstacle(2350, 175, 3, "valter_vite")
+        disseaparing_t2t9 = Obstacle(4500, 400, 7, "missile")
 
         level_2_group = pygame.sprite.Group()
         level_2_group.add(t2t1)
@@ -220,8 +220,8 @@ while running:
         level_2_group.add(t2t5)
         level_2_group.add(t2t6)
         level_2_group.add(disseaparing_t2t7)
-        # level_2_group.add(t2t8)
-        level_2_group.add(t2t9)
+        level_2_group.add(t2t8)
+        level_2_group.add(disseaparing_t2t9)
 
         level_2 = True
         level_2_init = False
@@ -336,8 +336,10 @@ while running:
                         playing = False
                         for sui in level_2_group:
                             sui.kill()
-                if disseaparing_t2t7.x <= 330:
+                # dissapearing blocks
+                if disseaparing_t2t7.x <= 300:
                     disseaparing_t2t7.kill()
+
                 level_2_group.update()
                 level_2_group.draw(display_surface)
         
